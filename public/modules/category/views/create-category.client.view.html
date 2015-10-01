@@ -1,0 +1,22 @@
+<section data-ng-controller = 'CategoryController'>
+	<div class="container create-container">
+		<div class="row header">
+			<div class="col-xs-2">
+				<a href="#/categories"><i class="fa fa-arrow-left"></i></a>
+			</div>
+			<div class="col-xs-8">
+				<h2>Crear Categoría</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 form-container">
+				<form name='createCategory' data-ng-submit="create()">
+				  <div class="form-group">
+				    <label for="name">Nombre</label>
+				    <input type="text" class="form-control" id="name" data-ng-model='name' placeholder="Nombre" name='name' required ng-class='{err: createCategory.name.$error.required && createCategory.$dirty}'>
+				  </div>
+				  <button type="submit" class="btn btn-primary pull-right">Crear</button>
+				</form>
+			</div>
+		</div>
+</section>

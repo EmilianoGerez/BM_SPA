@@ -1,0 +1,7 @@
+.register-container {
+	@extend %home-card-container;
+	.table-container {
+		height: 230px;
+	  overflow: scroll;
+	}
+}

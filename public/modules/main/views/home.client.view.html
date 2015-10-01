@@ -1,0 +1,122 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<!-- CASH REGISTER -->
+			<div ng-controller="RegisterController" class="col-xs-12 col-md-6 register-container"
+			ng-init="[getCount(),findByPage()]">
+				<div class="row">
+					<div class="col-xs-12 header">
+						<h4>Caja Registradora</h4>
+					</div>
+					<div class="col-xs-12">
+						<!-- Tabs -->
+						<tabset justified="true">
+						    <tab heading="Deposito">
+									<div ng-show='sucMessage'>
+										<div class="alert alert-success" role="alert">
+											<p>{{sucMessage}}</p>
+										</div>
+									</div>
+									<div ng-show='errMessage'>
+										<div class="alert alert-danger" role="alert">
+											<p>{{errMessage}}</p>
+										</div>
+									</div>
+									<!-- DEPOSIT Cash Register Form -->
+										<form name='depositRegister' role='form' data-ng-submit="create()">
+											<div class="form-group">
+												<label for="deposit">Monto</label>
+												<div class="input-group">
+													<span class="input-group-addon">$</span>
+													<input type="number" name="deposit"
+													class="form-control" placeholder="Ingresar monto"
+													ng-model="deposit"
+													ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /
+													required>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="comment">Comentario</label>
+												<textarea class="form-control" name='comment'
+												placeholder="Opcional.." cols="2" rows="2"
+												data-ng-model='comment'>
+												</textarea>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn-xs btn-success pull-right">Depositar</button>
+											</div>
+										</form>
+						    </tab>
+						    <!-- Extraction TAB -->
+						    <tab heading="Extracción">
+						    	<div ng-show='sucMessage'>
+						    		<div class="alert alert-success" role="alert">
+						    			<p>{{sucMessage}}</p>
+						    		</div>
+						    	</div>
+						    	<div ng-show='errMessage'>
+						    		<div class="alert alert-danger" role="alert">
+						    			<p>{{errMessage}}</p>
+						    		</div>
+					    		</div>
+						    	<!-- EXTRACTION Cash Register Form -->
+						    		<form name='extractRegister' role='form' data-ng-submit="create()">
+						    			<div class="form-group">
+						    				<label for="extract">Monto</label>
+						    				<div class="input-group">
+						    					<span class="input-group-addon">$</span>
+						    					<input type="number" name="extract"
+						    					class="form-control" placeholder="Ingresar monto"
+						    					ng-model="extract"
+						    					ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /
+						    					required>
+						    				</div>
+						    			</div>
+						    			<div class="form-group">
+						    				<label for="comment">Comentario</label>
+						    				<textarea class="form-control" name='comment'
+						    				placeholder="Opcional.." cols="2" rows="2"
+						    				data-ng-model='comment'>
+						    				</textarea>
+						    			</div>
+						    			<div class="form-group">
+						    				<button type="submit" class="btn-xs btn-danger pull-right">Extraer</button>
+						    			</div>
+						    		</form>
+						    </tab>
+						    <!-- List register TAB -->
+						    <tab heading="Movimientos">
+						    	<div class="table-container">
+										<table class="table">
+											<tbody>
+												<tr ng-repeat="register in registers">
+													<td>
+														<strong>{{register.date | date: 'shortDate'}}</strong>
+													</td>
+													<td class="text-success" ng-class="{'text-danger': (register.deposit === 0)}">
+														<strong>
+															{{(register.deposit !== 0) ? 'Deposito' : 'Extracción'}}
+														</strong>
+													</td>
+													<td class="text-success" ng-class="{'text-danger': (register.deposit === 0)}">
+														<strong>
+															{{(register.deposit !== 0) ? register.deposit : register.extract | currency: '$'}}
+														</strong>
+													</td>
+													<td class="hidden-xs">{{register.comment}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+						    </tab>
+					  </tabset>
+					</div>
+				</div>
+			</div>
+			<!-- Invoice and monetary gain -->
+			<div class="col-xs-12 col-md-6">
+				
+			</div>
+		</div>
+	</div>
+</section>

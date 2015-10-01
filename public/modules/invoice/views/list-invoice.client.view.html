@@ -1,0 +1,60 @@
+<section data-ng-controller = 'InvoiceController' data-ng-init='[findByPage(), getCount()]'>
+	<div class="container list-container">
+		<div class="row header">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-6">
+				<h2>Facturas</h2>
+			</div>
+			<div class="col-xs-3">
+				<div class="pull-right text-center hidden-xs">
+					<span ng-click="showSearch()"><i class="fa fa-search"></i></span>
+					<a href="/#/invoices/create"><i class="fa fa-plus"></i></a>
+				</div>
+			</div>
+			<!-- dropdown menu for mobile -->
+			<div class="dropdown pull-right visible-xs">
+				<a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<i class="fa fa-ellipsis-h"></i>
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a ng-click="showSearch()" href="#">Buscar</a></li>
+					<li><a href="/#/invoices/create">Crear producto</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" ng-show="searchActive">
+			<!-- Search -->
+			<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Buscar por número" aria-describedby="basic-addon1" data-ng-model='searchName'>
+						<a ng-click="searchInvoice()" ng-disabled="!searchName" class="btn input-group-addon"><i class="fa fa-search"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				
+			</div>
+			<div class="col-xs-12 alert" ng-class="{'alert-success': (searchResult.length > 0), 'alert-warning': (searchResult.length <= 0)}" ng-show="searchResult" role="alert">
+				<p><strong><i class="fa fa-search"></i> {{searchResult.length}}</strong> Resultados de Busqueda</p>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Iten Data -->
+			<div class="col-xs-12 item" data-ng-repeat='invoice in invoices' ng-hide="searchActive">
+				<div data-ui-view="item-container"></div>
+			</div>
+			<!-- Search Iten Data -->
+			<div class="col-xs-12 item" data-ng-repeat='invoice in searchResult' ng-show="searchActive">
+				<div data-ui-view="item-container"></div>
+			</div>
+		</div>
+		<!-- pagination and buttons -->
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<pagination ng-hide="searchActive" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" num-pages="numPages" items-per-page="10"></pagination>
+				<button class="btn btn-danger disable-search" ng-show="searchActive" ng-click="searchActive = false">Desactivar Busqueda</button>
+			</div>
+		</div>
+	</div>
+</section>

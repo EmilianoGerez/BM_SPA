@@ -1,0 +1,56 @@
+.list-container {
+	@extend %card-container;
+	.new-item {
+		margin-bottom: 15px;
+		a {
+			display: block;
+		}
+	}
+	.item {
+		margin-top: 10px;
+		background-color: $color-gray-light;
+		padding-bottom: 10px;
+		p {
+			margin-top: 10px;
+			margin-bottom: 0px;
+		}
+		.action-container {
+			.btn-group {
+				margin-top: 10px;
+				margin: 10px 0px 10px;
+				.btn-default {
+					background-color: $color-gray-light;
+				}
+				ul {
+					a:hover {
+						cursor: pointer;
+					}
+				}
+			}
+
+		}
+	}
+	.disable-search {
+		margin-top: 10px;
+	}
+	.alert {
+		i {
+			font-size: 30px;
+			width: 30px;
+			margin-right: 10px;
+		}
+		font-size: 24px;
+	}
+
+
+	@media (max-width:767px) {
+		.alert {
+			i {
+				font-size: 18px;
+				width: 18px;
+				margin-right: 5px;
+			}
+			font-size: 12px;
+		}
+	}
+}

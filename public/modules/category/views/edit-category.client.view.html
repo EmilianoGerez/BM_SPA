@@ -1,0 +1,22 @@
+<section data-ng-controller = 'CategoryController' data-ng-init='findOne()'>
+	<div class="container create-container">
+		<div class="row header">
+			<div class="col-xs-2">
+				<a href="#/categories"><i class="fa fa-arrow-left"></i></a>
+			</div>
+			<div class="col-xs-8">
+				<h2>Editar Categoría</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 form-container">
+				<form name='editCategory' data-ng-submit="update()">
+				  <div class="form-group">
+				    <label for="name">Nombre</label>
+				    <input type="text" class="form-control" id="name" data-ng-model='category.name' placeholder="Nombre" name='name' required ng-class='{err: editCategory.name.$error.required && editCategory.$dirty}'>
+				  </div>
+				  <button type="submit" class="btn btn-primary pull-right">Editar</button>
+				</form>
+			</div>
+		</div>
+</section>

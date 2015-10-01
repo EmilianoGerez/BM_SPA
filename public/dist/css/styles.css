@@ -1,0 +1,135 @@
+.list-container, .create-container {
+  -webkit-box-shadow: 0px 8px 8px #bbb;
+  -moz-box-shadow: 0px 8px 8px #bbb;
+  box-shadow: 0px 8px 8px #bbb;
+  background-color: #f5f5f5;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  padding-bottom: 30px; }
+  .list-container .header, .create-container .header {
+    border-bottom: 1px solid #b6b6b6;
+    margin-bottom: 20px; }
+    .list-container .header .btn, .create-container .header .btn {
+      padding: 0; }
+    .list-container .header i, .create-container .header i {
+      line-height: 70px;
+      width: 50px;
+      font-size: 30px;
+      color: #727272; }
+      .list-container .header i:hover, .create-container .header i:hover {
+        cursor: pointer;
+        color: #212121; }
+    .list-container .header h2, .create-container .header h2 {
+      color: #212121;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 50px; }
+  .list-container > .row, .create-container > .row {
+    width: 90%;
+    margin-left: 5%; }
+  @media (max-width: 767px) {
+    .list-container .header i, .create-container .header i {
+      line-height: 50px;
+      width: 30px;
+      font-size: 20px; }
+    .list-container .header h2, .create-container .header h2 {
+      color: #212121;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 20px; } }
+
+.list-container .new-item {
+  margin-bottom: 15px; }
+  .list-container .new-item a {
+    display: block; }
+
+.list-container .item {
+  margin-top: 10px;
+  background-color: #fbfbfb;
+  padding-bottom: 10px; }
+  .list-container .item p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
+  .list-container .item .action-container .btn-group {
+    margin-top: 10px;
+    margin: 10px 0px 10px; }
+    .list-container .item .action-container .btn-group .btn-default {
+      background-color: #fbfbfb; }
+    .list-container .item .action-container .btn-group ul a:hover {
+      cursor: pointer; }
+
+.list-container .disable-search {
+  margin-top: 10px; }
+
+.list-container .alert {
+  font-size: 24px; }
+  .list-container .alert i {
+    font-size: 30px;
+    width: 30px;
+    margin-right: 10px; }
+
+@media (max-width: 767px) {
+  .list-container .alert {
+    font-size: 12px; }
+    .list-container .alert i {
+      font-size: 18px;
+      width: 18px;
+      margin-right: 5px; } }
+
+.create-container textarea {
+  resize: vertical; }
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 1280px) {
+  .create-container .price-container .col-xs-12 {
+    padding-left: 0px;
+    padding-right: 0px; }
+  .create-container .price-container .col-lg-6 {
+    padding-left: 0px;
+    padding-right: 0px; } }
+
+@media only screen and (min-width: 1280px) {
+  .create-container .price-container .col-lg-6:first-child {
+    padding-left: 0px; }
+  .create-container .price-container .col-lg-6:last-child {
+    padding-right: 0px; } }
+
+.register-container {
+  -webkit-box-shadow: 0px 8px 8px #bbb;
+  -moz-box-shadow: 0px 8px 8px #bbb;
+  box-shadow: 0px 8px 8px #bbb;
+  background-color: #f5f5f5;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  padding-bottom: 15px; }
+  .register-container > .row {
+    width: 98%;
+    margin-left: 1%; }
+    .register-container > .row > .col-xs-12 {
+      padding-left: 0;
+      padding-right: 0; }
+  .register-container .header {
+    border-bottom: 0.5px solid #b6b6b6;
+    margin-top: 5px;
+    margin-bottom: 15px; }
+    .register-container .header h4 {
+      padding-left: 5px; }
+  .register-container .nav {
+    margin-bottom: 10px; }
+    .register-container .nav > li {
+      background-color: #dcdcdc; }
+    .register-container .nav > li > a {
+      padding: 5px 5px;
+      color: #727272; }
+  .register-container .nav-tabs > li.active > a, .register-container .nav-tabs > li.active > a:focus, .register-container .nav-tabs > li.active > a:hover {
+    background-color: #f5f5f5;
+    border-bottom-color: #f5f5f5; }
+
+.register-container .table-container {
+  height: 230px;
+  overflow: scroll; }
+
+/* General styles*/

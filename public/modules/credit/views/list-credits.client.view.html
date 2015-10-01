@@ -1,0 +1,37 @@
+<section data-ng-controller = 'CreditController' data-ng-init='findAll()'>
+	<div class="container list-container">
+		<div class="row header">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-6">
+				<h2>Créditos</h2>
+			</div>
+			<div class="col-xs-3">
+				<div class="pull-right text-center hidden-xs">
+					<a href="/#/credits/create"><i class="fa fa-plus"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Iten Data -->
+			<div class="col-xs-12 item" data-ng-repeat='credit in credits | filter: search'>
+				<div class="col-xs-8">
+					<p><strong>{{credit.name}}</strong><span class="pull-right">{{product.created | date: 'longDate'}}</span></p>
+					<p><strong>Plazo: </strong>{{credit.delay}} días</p>
+				</div>
+				<!-- Actions -->
+				<div class="col-xs-4 action-container">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-sm btn-default dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Acciones <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="/#/credits/{{credit._id}}/edit">Actualizar</a></li>
+							<li><a data-ng-click='remove(credit)'>Eliminar</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

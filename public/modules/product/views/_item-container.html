@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<p><strong>{{product.productCode_Obj.name}}</strong></p>
+		<p><strong>Costo: </strong>${{product.cost}} | <strong>Precio Venta: </strong>${{product.price}}</p>
+		<p>{{product.description}}</p>
+		<p><strong>Ingresado:</strong> {{product.created | date: 'longDate'}}</p>
+	</div>
+	
+	<div class="col-xs-12 col-md-4">
+		<p>
+			<span class="label label-default">Código:	{{product.displayCode}}</span>
+			<span class="label label-success" ng-class="{'label-danger': (product.state === 'Sold'), 'label-warning': (product.state === 'Warranty')}">Estado:	<span ng-if="product.state === 'Sold'">Vendido</span><span ng-if="product.state === 'Available'">Disponible</span><span ng-if="product.state === 'Warranty'">Garantía</span></span>
+			<span class="label label-info">Categoría: {{product.category_Obj.name}}</span>
+		</p>
+	</div>
+	<div class="col-xs-12 col-md-2">
+		<!-- Actions -->
+		<div class="action-container pull-right">
+			<div class="btn-group">
+				<button type="button" class="btn btn-sm btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Acciones <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li ng-hide="product.state !== 'Available'"><a href="/#/products/{{product._id}}/edit">Actualizar</a></li>
+					<li><a data-ng-click='remove(product, $event)'>Eliminar</a></li>
+					<li role="separator" class="divider"></li>
+					<li ng-hide="product.state === 'Available'"><a data-ng-click="updateState(product, 'Available')">Disponible</a></li>
+					<li ng-hide="product.state === 'Sold'"><a data-ng-click="updateState(product, 'Sold')">Vendido</a></li>
+					<li ng-hide="product.state !== 'Sold'"><a data-ng-click="updateState(product, 'Warranty')">Garantía</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- end action -->
+	</div>
+</div>

@@ -1,0 +1,35 @@
+.create-container {
+	@extend %card-container;
+	textarea {
+		resize: vertical;
+	}
+}
+
+ /* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 1280px) {
+	.create-container {
+		.price-container {
+			.col-xs-12{
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+			.col-lg-6{
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width : 1280px) {
+	.create-container {
+		.price-container {
+			.col-lg-6:first-child {
+				padding-left: 0px;
+			}
+			.col-lg-6:last-child {
+				padding-right: 0px;
+			}
+		}
+	}
+}

@@ -1,0 +1,147 @@
+<section data-ng-controller = 'InvoiceController' data-ng-init='findSelectData()'>
+	<div class="container create-container">
+		<div class="row header">
+			<div class="col-xs-2">
+				<a href="#/invoices"><i class="fa fa-arrow-left"></i></a>
+			</div>
+			<div class="col-xs-8">
+				<h2>Crear Factura</h2>
+			</div>
+		</div>
+		<div class="row">
+			<!-- Server-Side error message -->
+			<div class="col-xs-12" ng-show='errMessage'>
+				<div class="alert alert-danger" role="alert">
+					<p>{{errMessage}}</p>
+				</div>
+			</div>
+			<!-- Form -->
+			<div class="col-xs-12 form-container">
+				<form name='createInvoice' role='form'
+					data-ng-submit="create()">
+					<!-- Date -->
+					<div class="col-xs-12 form-group">
+						<fieldset>
+							<legend>Fecha</legend>
+							<p class="input-group">
+								<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</fieldset>
+					</div>
+					<!-- Client Data -->
+					<div class="form-group col-xs-12">
+						<fieldset>
+							<legend>Cliente</legend>
+							<label for="clienName">Nombre</label>
+							<input type="text" name="clientName"
+							class="form-control" placeholder="Ingresar nombre"
+							ng-model="clientName" required>
+						</fieldset>
+					</div>
+					<!-- Payment -->
+					<div class="form-group col-xs-12">
+						<fieldset>
+							<legend>Forma de pago</legend>
+							<div class="radio-inline">
+								<label>
+									<input type="radio" name="cash" ng-model="cash" id="inlineCheckbox1" value='true'>
+									Efectivo
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label>
+									<input type="radio" name="cash" ng-model="cash" id="inlineCheckbox2" value='false'>
+									Crédito
+								</label>
+							</div>
+							<select class="form-control" name='credit'
+								data-ng-model='credit' ng-show="cash==='false'"
+								data-ng-options='value._id as value.name for value in creditsData track by value._id'>
+								<option value="">--Seleccionar crédito--</option>
+							</select>
+						</fieldset>
+					</div>
+					<!-- Product Table -->
+					<div class="col-xs-12">
+						<fieldset>
+							<legend>Productos</legend>
+							<table class="table table-striped">
+								<thead>
+									<th>Nombre</th>
+									<th>Precio</th>
+									<th>Eliminar</th>
+								</thead>
+								<tbody>
+									<tr ng-repeat="product in invoiceProducts">
+										<td>{{product.productCode_Obj.name}}</td>
+										<td>{{product.price}}</td>
+										<td><button class="btn btn-danger btn-xs" ng-click="removeProduct(product)">X</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</div>
+					<!-- Add product button -->
+					<div class="col-xs-12 form-group">
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-success pull-left" data-toggle="modal" data-target="#myModal">
+						Agregar
+						</button>
+					</div>
+					<div class="form-group col-xs-8	col-xs-offset-4 col-sm-4	col-sm-offset-8">
+						<label for="subtotal">SubTotal</label>
+						<div class="input-group">
+							<p class="">$ {{subTotal()}}</p>
+						</div>
+					</div>
+					<div class="form-group col-xs-8	col-xs-offset-4 col-sm-4	col-sm-offset-8">
+						<label for="discount">Descuento</label>
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input type="number" name="discount"
+							class="form-control" placeholder="Ingresar descuento"
+							ng-model="discount"
+							ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /
+							required>
+						</div>
+					</div>
+					<div class="form-group col-xs-8	col-xs-offset-4 col-sm-4	col-sm-offset-8">
+						<label for="total">Total</label>
+						<div class="input-group">
+							<p class="">$ {{total()}}</p>
+						</div>
+					</div>
+					<div class="col-xs-12 form-group">
+						<button type="submit" class="btn btn-primary pull-right">Crear</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" name="search"
+						class="form-control" placeholder="Buscar"
+						ng-model="search" required>
+					</div>
+					<div class="list-group">
+						<a href="#" class="list-group-item" ng-click="addProduct(product)" ng-repeat="product in productsData | filter: search">
+							<p class="list-group-item-text">{{product.productCode_Obj.name}}</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

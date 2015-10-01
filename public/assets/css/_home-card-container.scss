@@ -1,0 +1,41 @@
+%home-card-container {
+	@include box-shadow(0px, 8px, 8px, $color-shadow);
+	background-color: $color-gray-primary;
+	margin-top: 15px;
+	margin-bottom: 50px;
+	padding-bottom: 15px;
+	//height: 400px;
+	//overflow: scroll;
+	>.row{
+		width: 98%;
+		margin-left: 1%;
+		>.col-xs-12 {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	.header {
+		border-bottom: 0.5px solid $color-divider;
+		margin-top: 5px;
+		margin-bottom: 15px;
+
+		h4 {
+			padding-left: 5px;
+		}
+	}
+	.nav {
+		margin-bottom: 10px;
+		> li {
+			background-color: $color-gray-dark;
+		}
+		> li > a {
+			padding: 5px 5px;
+			color: $color-text-secondary;
+		}
+	}
+
+	.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+		background-color: $color-gray-primary;
+		border-bottom-color: $color-gray-primary;
+	}
+}

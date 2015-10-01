@@ -1,0 +1,40 @@
+<section data-ng-controller = 'CategoryController' data-ng-init='findAll()'>
+	<div class="container list-container">
+		<div class="row header">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-6">
+				<h2>Categorías</h2>
+			</div>
+			<div class="col-xs-3">
+				<div class="pull-right text-center hidden-xs">
+					<a href="/#/categories/create"><i class="fa fa-plus"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 item" data-ng-repeat='category in categories'>
+				<div class="col-xs-8">
+					<p><strong>{{category.name}}</strong></p>
+					<p>
+						<span class="label label-success">Código:	{{category.code}}</span>
+					</p>
+				</div>
+				<div class="col-xs-4">
+					<!-- Actions -->
+					<div class="action-container pull-right">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Acciones <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="/#/categories/{{category._id}}/edit">Actualizar</a></li>
+								<li><a data-ng-click='remove(category, $event)'>Eliminar</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- end action -->
+				</div>
+			</div>
+		</div>
+</section>
